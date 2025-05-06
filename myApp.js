@@ -6,9 +6,9 @@ let app = express();
 console.log("Hello World");
 
 // Logger middleware
-app.use(function(req, res, next) {
-  console.log(req.method + " " + req.path + " - " + req.ip);
-  next();
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`); 
+  next(); 
 });
 
 // Serve static assets from the "public" folder
