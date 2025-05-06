@@ -5,6 +5,12 @@ let app = express();
 
 console.log("Hello World");
 
+// Logger middleware
+app.use(function(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+});
+
 // Serve static assets from the "public" folder
 app.use("/public", express.static(__dirname + "/public"));
 
@@ -21,40 +27,6 @@ app.get("/json", function(req, res) {
     }
     res.json({ message: message });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  module.exports = app;
